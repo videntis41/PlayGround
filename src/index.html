@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1c1215">
+  <meta name="description" content="Sole Mate is a playful, non-explicit foot-care ritual simulator.">
+  <title>Sole Mate — A Foot-Care Ritual</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23351a22'/%3E%3Cpath d='M26 15c7 0 9 7 9 12 0 7 7 11 7 20 0 7-5 11-12 11-8 0-13-5-13-13 0-6 2-11 4-16 2-5 1-14 5-14Z' fill='%23e7b49d'/%3E%3Ccircle cx='23' cy='16' r='4' fill='%23f1cbb9'/%3E%3Ccircle cx='30' cy='19' r='3.2' fill='%23f1cbb9'/%3E%3Ccircle cx='35' cy='24' r='2.6' fill='%23f1cbb9'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient" aria-hidden="true">
+    <div class="ambient-glow ambient-glow--one"></div>
+    <div class="ambient-glow ambient-glow--two"></div>
+    <div class="ambient-grain"></div>
+  </div>
+
+  <div id="app" class="app" data-app-ready="false">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Sole Mate home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 44 44" role="img">
+            <path d="M18.4 8.5c4.9 0 6.4 4.8 6.4 8.6 0 5 5 7.8 5 14.2 0 5-3.6 7.8-8.6 7.8-5.7 0-9.3-3.6-9.3-9.3 0-4.3 1.4-7.9 2.9-11.5 1.4-3.6.7-9.8 3.6-9.8Z" fill="currentColor"/>
+            <ellipse cx="15.7" cy="9.2" rx="3.2" ry="4.4" transform="rotate(-18 15.7 9.2)" fill="currentColor"/>
+            <ellipse cx="21.7" cy="10.2" rx="2.6" ry="3.8" transform="rotate(-8 21.7 10.2)" fill="currentColor"/>
+            <ellipse cx="26.2" cy="13.4" rx="2.2" ry="3.2" transform="rotate(8 26.2 13.4)" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="brand-type">
+          <strong>Sole Mate</strong>
+          <small>a foot-care ritual</small>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="nav-link is-active" href="#ritual">Ritual</a>
+        <a class="nav-link" href="#reflex">Reflex</a>
+        <a class="nav-link" href="#wardrobe">Wardrobe</a>
+        <a class="nav-link" href="#journal">Journal</a>
+      </nav>
+
+      <div class="top-meta">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span class="studio-label">Studio 03</span>
+        <span class="meta-rule" aria-hidden="true"></span>
+        <span class="session-time" id="sessionTime">00:00</span>
+        <button class="icon-button" id="soundToggle" type="button" aria-label="Toggle ambient sound" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h3l4 3V7L7 10H4Zm11.5-1.5a5 5 0 0 1 0 7M18 6a9 9 0 0 1 0 12" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="layout" id="ritual">
+      <section class="stage" aria-label="Treatment studio">
+        <div class="stage-heading">
+          <p class="eyebrow"><span class="eyebrow-line"></span>Tonight's session</p>
+          <h1>Mara's <em>slow</em> evening.</h1>
+          <p class="lede">One hour. Low light. Nothing to do but unwind.</p>
+        </div>
+
+        <div class="scene" id="scene">
+          <div class="scene-arch" aria-hidden="true"></div>
+          <div class="scene-light" aria-hidden="true"></div>
+          <div class="plant" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i>
+          </div>
+          <div class="candle" aria-hidden="true">
+            <span class="candle-flame"></span>
+            <span class="candle-body"></span>
+            <span class="candle-glow"></span>
+          </div>
+          <div class="steam steam--one" aria-hidden="true"></div>
+          <div class="steam steam--two" aria-hidden="true"></div>
+          <div class="dust" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+          <div class="foot-stage">
+            <div class="foot-aura" aria-hidden="true"></div>
+            <svg class="foot-art" viewBox="0 0 640 640" role="img" aria-label="An illustrated foot resting on a velvet cushion, ready for a warm foot-care ritual">
+              <defs>
+                <linearGradient id="roomWarm" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#6b3e3f"/>
+                  <stop offset=".58" stop-color="#4a252b"/>
+                  <stop offset="1" stop-color="#2c151b"/>
+                </linearGradient>
+                <radialGradient id="roomGlow" cx=".5" cy=".32" r=".68">
+                  <stop offset="0" stop-color="#f2b68c" stop-opacity=".52"/>
+                  <stop offset=".45" stop-color="#c87566" stop-opacity=".18"/>
+                  <stop offset="1" stop-color="#2c151b" stop-opacity="0"/>
+                </radialGradient>
+                <linearGradient id="skin" x1=".16" y1=".1" x2=".84" y2=".9">
+                  <stop offset="0" stop-color="#f4c8b3"/>
+                  <stop offset=".38" stop-color="#e5a68f"/>
+                  <stop offset=".72" stop-color="#cf826f"/>
+                  <stop offset="1" stop-color="#a85d55"/>
+                </linearGradient>
+                <linearGradient id="skinSoft" x1=".2" y1="0" x2=".7" y2="1">
+                  <stop offset="0" stop-color="#f6d1bf"/>
+                  <stop offset=".5" stop-color="#e8ae97"/>
+                  <stop offset="1" stop-color="#c47a6b"/>
+                </linearGradient>
+                <linearGradient id="skinBack" x1=".1" y1="0" x2=".8" y2="1">
+                  <stop offset="0" stop-color="#d99b87"/>
+                  <stop offset="1" stop-color="#a85d55"/>
+                </linearGradient>
+                <linearGradient id="cushion" x1="0" y1="0" x2=".9" y2="1">
+                  <stop offset="0" stop-color="#6e3340"/>
+                  <stop offset=".55" stop-color="#4e202b"/>
+                  <stop offset="1" stop-color="#2d1017"/>
+                </linearGradient>
+                <linearGradient id="towel" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#f5dfc8"/>
+                  <stop offset=".55" stop-color="#dfc0a4"/>
+                  <stop offset="1" stop-color="#b98973"/>
+                </linearGradient>
+                <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#f3d9a0"/>
+                  <stop offset=".45" stop-color="#c89750"/>
+                  <stop offset="1" stop-color="#8c5c2f"/>
+                </linearGradient>
+                <linearGradient id="nail" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#f6d8ce"/>
+                  <stop offset=".45" stop-color="#dc9a96"/>
+                  <stop offset="1" stop-color="#9d515a"/>
+                </linearGradient>
+                <radialGradient id="cushionShade" cx=".45" cy=".45" r=".55">
+                  <stop offset="0" stop-color="#7d3d4b"/>
+                  <stop offset="1" stop-color="#39141d"/>
+                </radialGradient>
+                <filter id="softShadow" x="-40%" y="-40%" width="180%" height="180%">
+                  <feGaussianBlur stdDeviation="13"/>
+                </filter>
+                <filter id="tinyShadow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="4"/>
+                </filter>
+                <filter id="glowFilter" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="7" result="blur"/>
+                  <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+              </defs>
+
+              <rect width="640" height="640" fill="url(#roomWarm)"/>
+              <rect width="640" height="640" fill="url(#roomGlow)"/>
+              <path d="M0 490c94-46 176-46 254-12 91 40 188 43 386-17v179H0Z" fill="#241017" opacity=".8"/>
+              <ellipse cx="323" cy="554" rx="256" ry="55" fill="#15090d" opacity=".48" filter="url(#softShadow)"/>
+
+              <g class="foot-shadow">
+                <ellipse cx="330" cy="522" rx="252" ry="42" fill="#170a0e" opacity=".55" filter="url(#softShadow)"/>
+              </g>
+
+              <g class="cushion">
+                <path d="M76 512c24-45 82-69 164-75 77-6 168 5 244 30 61 20 99 49 98 75-1 27-52 44-130 44H187c-72 0-124-24-111-74Z" fill="url(#cushion)"/>
+                <path d="M101 514c34-34 91-51 162-56 68-5 151 4 221 25 50 15 82 37 85 56-9 22-58 32-120 32H188c-60 0-99-17-87-57Z" fill="url(#cushionShade)" opacity=".82"/>
+                <path d="M122 529c49-28 123-38 202-35 80 3 158 20 198 48" fill="none" stroke="#a35b68" stroke-linecap="round" stroke-width="2" opacity=".38"/>
+                <path d="M151 550c51-17 111-23 171-21 75 2 146 12 198 32" fill="none" stroke="#d18c91" stroke-linecap="round" stroke-width="1.5" opacity=".24"/>
+                <g opacity=".6">
+                  <path d="M507 485c-22 2-38 12-49 29" fill="none" stroke="#e0a0a1" stroke-linecap="round" stroke-width="1.4"/>
+                  <path d="M519 478c-15 13-24 27-27 42" fill="none" stroke="#e0a0a1" stroke-linecap="round" stroke-width="1.2"/>
+                </g>
+              </g>
+
+              <path d="M128 457c35-41 93-66 165-73 57-5 117 3 171 23 26 10 48 22 65 37-42 11-94 16-153 15-99-2-187 2-248 12Z" fill="url(#towel)" opacity=".93"/>
+              <path d="M130 458c65-15 143-20 225-18 54 1 99 5 139 12" fill="none" stroke="#fff5e8" stroke-linecap="round" stroke-width="2" opacity=".35"/>
+
+              <g class="main-foot" transform="translate(-20 -140) scale(15)">
+                <path fill="url(#skin)" fill-rule="evenodd" d="M40.451 10a1 1 0 0 0-1-1H28.235a1 1 0 0 0-1 1v2.027l-.997 10.654c-.917 1.756-2.619 3.295-4.61 4.578c-2.035 1.313-4.279 2.298-6.046 2.94c-1.353.49-2.687 1.157-3.856 2.108l-.67.545H7.335a1 1 0 0 0-.939.654c-.287.78-.56 2.04-.274 3.182c.15.597.465 1.202 1.047 1.65S8.498 39 9.373 39c2.563 0 3.927-.17 4.763-.436c.435-.138.725-.3.958-.464a2 2 0 0 1 .192.124c.134.094.36.25.633.369c.662.288 1.628.407 3.65.407c1.965 0 3.256-.237 4.227-.612q.461-.18.868-.348c.945-.387 1.716-.702 2.584-.754a35 35 0 0 1 2.498-.07c.849.014 1.456.08 1.737.175c.304.104.571.235.859.392l.264.148c.216.122.462.261.702.38c.774.387 1.69.689 3.084.689c1.156 0 2.771-.288 4.13-1.21C41.935 36.833 43 35.23 43 32.816c0-1.722-.528-3.465-1.127-4.875c-.795-1.872-1.422-3.701-1.422-5.545zM36.5 25a1 1 0 0 0-2-.005v.012l-.003.067a5.4 5.4 0 0 1-.258 1.297c-.264.792-.771 1.682-1.754 2.271a1 1 0 0 0 1.03 1.716c1.517-.911 2.26-2.271 2.621-3.354a7.4 7.4 0 0 0 .357-1.815l.006-.128v-.039l.001-.013zh-1z" clip-rule="evenodd"/>
+                <path d="M34 21 C30 25 24 28 20 30 C16 32 12 33 9 35" fill="none" stroke="#fff3e8" stroke-linecap="round" stroke-width="1.1" opacity=".28"/>
+                <path d="M20 39 C24 41 30 41 34 39" fill="none" stroke="#8f4a48" stroke-linecap="round" stroke-width="1.2" opacity=".24"/>
+                <path d="M36.5 25a1 1 0 0 0-2-.005" fill="none" stroke="#8f4a48" stroke-width="1.1" opacity=".22"/>
+                <ellipse cx="11.8" cy="34.7" rx="3.4" ry="2.2" transform="rotate(-22 11.8 34.7)" fill="url(#nail)" opacity=".88"/>
+                <ellipse cx="16.3" cy="33.1" rx="2.4" ry="1.6" transform="rotate(-28 16.3 33.1)" fill="url(#nail)" opacity=".65"/>
+                <path d="M14.5 38 C15.6 37.4 16.5 36.7 17 36" fill="none" stroke="#8f4a48" stroke-linecap="round" stroke-width=".6" opacity=".48"/>
+                <path d="M18 37.4 C19 36.8 20 36.1 20.6 35.4" fill="none" stroke="#8f4a48" stroke-linecap="round" stroke-width=".55" opacity=".44"/>
+                <g fill="none" stroke="url(#gold)" stroke-width=".7">
+                  <path d="M10.2 36.5 C11.7 38 13.9 38.1 15.5 36.6"/>
+                </g>
+                <g class="anklet">
+                  <path d="M28.2 16.6 C31.4 18.4 36.6 18.4 39.8 16.6" fill="none" stroke="#2b1418" stroke-linecap="round" stroke-width="1.3" opacity=".3"/>
+                  <path d="M28.2 16.1 C31.5 17.9 36.5 17.9 39.8 16.1" fill="none" stroke="url(#gold)" stroke-linecap="round" stroke-width=".85"/>
+                  <g fill="url(#gold)">
+                    <circle cx="30" cy="17.1" r=".55"/><circle cx="32.2" cy="17.7" r=".55"/><circle cx="34.5" cy="17.7" r=".55"/><circle cx="36.8" cy="17.2" r=".55"/><circle cx="38.5" cy="16.5" r=".55"/>
+                  </g>
+                  <path d="M39.2 16.4 L39.2 19.5" stroke="url(#gold)" stroke-width=".45"/>
+                  <circle cx="39.2" cy="20.5" r="1.2" fill="url(#gold)"/>
+                  <circle cx="39.2" cy="20.5" r=".45" fill="#4c2029"/>
+                </g>
+              </g>
+
+              <g class="reflex-dots" opacity=".7">
+                <path d="M232 298c-11 23-17 49-14 74 3 23 14 42 31 53" fill="none" stroke="#f2c9b2" stroke-dasharray="2 8" stroke-linecap="round" stroke-width="2"/>
+                <circle cx="220" cy="372" r="3" fill="#f6d7c4"/>
+                <circle cx="239" cy="423" r="2.5" fill="#f6d7c4"/>
+                <circle cx="280" cy="463" r="2.5" fill="#f6d7c4"/>
+              </g>
+
+              <g class="sparkles" fill="#ffe6c6">
+                <circle cx="161" cy="294" r="1.8" opacity=".6"/>
+                <circle cx="480" cy="216" r="2.2" opacity=".48"/>
+                <circle cx="523" cy="370" r="1.5" opacity=".5"/>
+                <circle cx="137" cy="421" r="1.3" opacity=".45"/>
+                <circle cx="432" cy="145" r="1.4" opacity=".4"/>
+              </g>
+            </svg>
+
+            <button class="zone zone--toes" data-zone="toes" type="button" aria-label="Massage the toes"><span>toes</span></button>
+            <button class="zone zone--ball" data-zone="ball" type="button" aria-label="Press the ball of the foot"><span>ball</span></button>
+            <button class="zone zone--arch" data-zone="arch" type="button" aria-label="Trace the arch"><span>arch</span></button>
+            <button class="zone zone--heel" data-zone="heel" type="button" aria-label="Cup the heel"><span>heel</span></button>
+          </div>
+
+          <div class="scene-caption">
+            <span class="caption-index">01</span>
+            <span class="caption-copy">Warm towel · eucalyptus · low light</span>
+            <span class="caption-rule"></span>
+            <span class="caption-mood" id="moodLabel">mood: unwinding</span>
+          </div>
+
+          <div class="float-note" id="floatNote" aria-hidden="true"></div>
+        </div>
+
+        <div class="stat-strip" aria-label="Ritual stats">
+          <div class="stat">
+            <div class="stat-top"><span>Warmth</span><strong id="warmthValue">34</strong></div>
+            <div class="stat-track"><span id="warmthBar" style="--value:34%"></span></div>
+          </div>
+          <div class="stat">
+            <div class="stat-top"><span>Softness</span><strong id="softnessValue">28</strong></div>
+            <div class="stat-track"><span id="softnessBar" style="--value:28%"></span></div>
+          </div>
+          <div class="stat">
+            <div class="stat-top"><span>Glow</span><strong id="glowValue">18</strong></div>
+            <div class="stat-track"><span id="glowBar" style="--value:18%"></span></div>
+          </div>
+          <div class="stat-note">
+            <span class="stat-note-icon" aria-hidden="true">+</span>
+            <span>Every touch is a little ritual.</span>
+          </div>
+        </div>
+      </section>
+
+      <aside class="panel" aria-label="Ritual controls">
+        <div class="panel-topline">
+          <span class="panel-kicker">The ritual</span>
+          <span class="panel-count" id="ritualCount">01 / 06</span>
+        </div>
+
+        <div class="client">
+          <div class="avatar" aria-hidden="true">
+            <span>MV</span>
+            <i></i>
+          </div>
+          <div class="client-copy">
+            <span class="eyebrow">In the chair</span>
+            <h2>Mara Vale</h2>
+            <p>Writer · 34 · barefoot enthusiast</p>
+          </div>
+          <div class="rating" aria-label="Five star rating">
+            <span aria-hidden="true">★★★★★</span>
+          </div>
+        </div>
+
+        <blockquote class="quote" id="quote">“I've been on my feet since six. Be gentle with me.”</blockquote>
+
+        <div class="progress-block">
+          <div class="progress-copy">
+            <span>Ritual progress</span>
+            <span id="progressText">12%</span>
+          </div>
+          <div class="progress-track"><span id="progressBar" style="--value:12%"></span></div>
+          <div class="progress-foot">
+            <span>warm-up</span>
+            <span id="nextMilestone">next: soften</span>
+          </div>
+        </div>
+
+        <div class="tools-heading">
+          <h3>Choose a touch</h3>
+          <span id="toolHint">6 rituals</span>
+        </div>
+
+        <div class="tool-grid" id="toolGrid">
+          <button class="tool is-active" data-tool="soak" type="button" aria-pressed="true">
+            <span class="tool-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 14c0 3 3 5 7 5s7-2 7-5M8 11c-1-2 1-3 0-5M12 11c-1-2 1-3 0-5M16 11c-1-2 1-3 0-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.7"/></svg>
+            </span>
+            <span class="tool-name">Warm soak</span>
+            <span class="tool-note">soften</span>
+          </button>
+          <button class="tool" data-tool="scrub" type="button" aria-pressed="false">
+            <span class="tool-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="9" cy="10" r="4.5" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="15.5" cy="15.5" r="3" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M4 19c2-1 3-1 5 0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"/></svg>
+            </span>
+            <span class="tool-name">Sugar scrub</span>
+            <span class="tool-note">polish</span>
+          </button>
+          <button class="tool" data-tool="oil" type="button" aria-pressed="false">
+            <span class="tool-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3c3 4 6 6.7 6 10a6 6 0 0 1-12 0c0-3.3 3-6 6-10Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.7"/><path d="M9 14c.5 1.3 1.4 2 2.5 2.2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.4"/></svg>
+            </span>
+            <span class="tool-name">Warm oil</span>
+            <span class="tool-note">glow</span>
+          </button>
+          <button class="tool" data-tool="press" type="button" aria-pressed="false">
+            <span class="tool-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M7 12.5V8a1.6 1.6 0 0 1 3.2 0v3-5a1.6 1.6 0 0 1 3.2 0v5-4a1.6 1.6 0 0 1 3.2 0v5-2a1.6 1.6 0 0 1 3.2 0V15c0 3.3-2.7 6-6 6h-1.2a6 6 0 0 1-4.8-2.4l-2.4-3.2a1.7 1.7 0 0 1 2.6-2.2L7 14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></svg>
+            </span>
+            <span class="tool-name">Reflex press</span>
+            <span class="tool-note">devotion</span>
+          </button>
+          <button class="tool" data-tool="mist" type="button" aria-pressed="false">
+            <span class="tool-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M9 8h6v11H9zM10 8V6h4v2M17 6h.01M19 9h.01M17 12h.01M20 14h.01M16 16h.01" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"/></svg>
+            </span>
+            <span class="tool-name">Rose mist</span>
+            <span class="tool-note">refresh</span>
+          </button>
+          <button class="tool" data-tool="wrap" type="button" aria-pressed="false">
+            <span class="tool-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 8c4-2 10-2 14 0v8c-4 2-10 2-14 0V8Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.7"/><path d="M9 7v10M15 7v10" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".6"/></svg>
+            </span>
+            <span class="tool-name">Silk wrap</span>
+            <span class="tool-note">rest</span>
+          </button>
+        </div>
+
+        <div class="devotion-block">
+          <div class="devotion-copy">
+            <span>Devotion</span>
+            <span><strong id="devotionValue">08</strong> / 100</span>
+          </div>
+          <div class="hearts" id="hearts" aria-hidden="true">
+            <span class="heart is-on"></span><span class="heart"></span><span class="heart"></span><span class="heart"></span><span class="heart"></span>
+          </div>
+        </div>
+
+        <div class="ritual-note">
+          <span class="note-label">House note</span>
+          <p>Warmth first. Then slow circles. Let the room do the rest.</p>
+          <span class="note-rule" aria-hidden="true"></span>
+        </div>
+
+        <button class="cta" id="continueBtn" type="button">
+          <span>Continue the ritual</span>
+          <span class="cta-arrow" aria-hidden="true">→</span>
+        </button>
+        <p class="consent">Adults only · consensual · non-explicit</p>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <span>Sole Mate Studio</span>
+      <span class="footer-rule"></span>
+      <span>Slow hands, softer evenings.</span>
+      <span class="footer-spacer"></span>
+      <button class="text-button" id="resetBtn" type="button">Reset session</button>
+      <span class="footer-rule"></span>
+      <span>Est. 2026</span>
+    </footer>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
