@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#120d1a">
+  <meta name="description" content="Sole Mate is a cozy, non-explicit foot-care ritual sim. Massage, polish, and perfect the details.">
+  <title>Sole Mate — A Foot-Care Ritual Sim</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%23ff9f86'/%3E%3Cstop offset='1' stop-color='%23c16a94'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='18' fill='%23120d1a'/%3E%3Cpath d='M22 15c7-3 15 2 16 10 1 6-2 10-1 16 1 7 3 10-2 13-6 4-15 1-17-6-2-6 2-10 2-15 0-5-4-15 2-18z' fill='url(%23g)'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="ambient" aria-hidden="true">
+    <span class="orb orb-a"></span>
+    <span class="orb orb-b"></span>
+    <span class="orb orb-c"></span>
+    <span class="grain"></span>
+  </div>
+
+  <main id="app" class="app" data-screen="menu" data-ready="false">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Sole Mate home" id="brand-home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" role="img"><path d="M13 7c5-2 10 1 11 7 1 4-1 7-1 11 0 4 2 7-1 9-4 3-10 1-11-4-1-4 1-7 1-10 0-4-2-11 1-13z" fill="currentColor"/></svg>
+        </span>
+        <span class="brand-copy">
+          <strong>Sole Mate</strong>
+          <small>a foot-care ritual sim</small>
+        </span>
+      </a>
+      <div class="topstats" aria-label="Shift statistics">
+        <div class="stat"><span>Shift</span><strong id="stat-shift">1</strong></div>
+        <div class="stat"><span>Tips</span><strong id="stat-money">$0</strong></div>
+        <div class="stat"><span>Vibe</span><strong id="stat-vibe">Calm</strong></div>
+      </div>
+    </header>
+
+    <section id="menu" class="screen menu" aria-labelledby="menu-title">
+      <div class="menu-copy">
+        <p class="eyebrow"><span class="dot"></span> Evening appointment · 8:00 PM</p>
+        <h1 id="menu-title">Every sole<br><em>has a story.</em></h1>
+        <p class="lede">Warm the oil. Choose the shade. Read the mood. Run a tiny after-hours studio where the details are the whole point.</p>
+        <div class="menu-actions">
+          <button id="start-game" class="btn btn-primary" type="button" data-capture-start>
+            <span>Start Game</span>
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button id="how-to" class="btn btn-ghost" type="button">How to play</button>
+        </div>
+        <p class="menu-note">Cozy, non-explicit, and entirely about impeccable foot care.</p>
+      </div>
+
+      <div class="menu-visual" aria-hidden="true">
+        <div class="visual-ring ring-one"></div>
+        <div class="visual-ring ring-two"></div>
+        <div class="floating-card card-top">
+          <span class="card-kicker">01 · Warm</span>
+          <strong>Massage oil</strong>
+        </div>
+        <svg class="preview-foot" viewBox="0 0 380 620" role="presentation">
+          <defs>
+            <linearGradient id="preview-skin" x1=".1" y1="0" x2=".9" y2="1">
+              <stop offset="0" stop-color="#f9d6ba"/>
+              <stop offset=".55" stop-color="#eeb18e"/>
+              <stop offset="1" stop-color="#cd7f5f"/>
+            </linearGradient>
+            <linearGradient id="preview-nail" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ffb1a0"/>
+              <stop offset="1" stop-color="#ff7b6a"/>
+            </linearGradient>
+            <radialGradient id="preview-glow" cx=".5" cy=".5" r=".5">
+              <stop offset="0" stop-color="#ffb08f" stop-opacity=".38"/>
+              <stop offset="1" stop-color="#ffb08f" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <ellipse cx="190" cy="560" rx="160" ry="46" fill="url(#preview-glow)"/>
+          <path d="M134 146C104 152 92 177 95 206c4 34 14 57 9 91-5 36-22 64-17 104 6 50 39 83 84 88 48 5 86-26 98-71 10-38 1-73-4-109-5-36 11-65 9-96-2-32-18-55-46-64-30-10-65-9-94-3Z" fill="url(#preview-skin)"/>
+          <g>
+            <ellipse cx="134" cy="150" rx="38" ry="50" transform="rotate(-8 134 150)" fill="url(#preview-skin)"/>
+            <ellipse cx="184" cy="128" rx="27" ry="37" transform="rotate(-3 184 128)" fill="url(#preview-skin)"/>
+            <ellipse cx="221" cy="122" rx="23" ry="32" transform="rotate(2 221 122)" fill="url(#preview-skin)"/>
+            <ellipse cx="252" cy="128" rx="20" ry="27" transform="rotate(8 252 128)" fill="url(#preview-skin)"/>
+            <ellipse cx="277" cy="140" rx="16" ry="22" transform="rotate(14 277 140)" fill="url(#preview-skin)"/>
+          </g>
+          <g fill="url(#preview-nail)">
+            <ellipse cx="132" cy="136" rx="20" ry="26" transform="rotate(-8 132 136)"/>
+            <ellipse cx="184" cy="115" rx="13.5" ry="18" transform="rotate(-3 184 115)"/>
+            <ellipse cx="222" cy="108" rx="12" ry="16" transform="rotate(2 222 108)"/>
+            <ellipse cx="253" cy="118" rx="10" ry="13.5" transform="rotate(8 253 118)"/>
+            <ellipse cx="278" cy="130" rx="8.5" ry="11" transform="rotate(14 278 130)"/>
+          </g>
+          <ellipse cx="190" cy="214" rx="79" ry="54" fill="#f9d6ba" opacity=".2"/>
+          <ellipse cx="187" cy="446" rx="47" ry="32" fill="#f9d6ba" opacity=".22"/>
+        </svg>
+        <div class="floating-card card-bottom">
+          <span class="card-kicker">02 · Gloss</span>
+          <strong>Coral, always</strong>
+        </div>
+        <div class="spark spark-a"></div>
+        <div class="spark spark-b"></div>
+        <div class="spark spark-c"></div>
+      </div>
+    </section>
+
+    <section id="studio" class="screen studio" aria-label="Treatment studio" hidden>
+      <aside class="panel client-panel">
+        <div class="panel-label">Tonight's guest</div>
+        <div class="client-card">
+          <div class="avatar" id="client-avatar">M</div>
+          <div>
+            <h2 id="client-name">Mira</h2>
+            <p id="client-mood">Sunset stroll · tired but hopeful</p>
+          </div>
+        </div>
+        <blockquote class="quote">“<span id="client-quote">I have been on my feet all day. Something warm, please.</span>”</blockquote>
+
+        <div class="ritual">
+          <div class="panel-label">The ritual</div>
+          <ol id="step-list" class="step-list"></ol>
+        </div>
+
+        <div class="tip-card">
+          <div>
+            <span>Appointment tip</span>
+            <small id="client-bonus">Comfort bonus at 80+</small>
+          </div>
+          <strong id="client-tip">$24</strong>
+        </div>
+      </aside>
+
+      <section class="stage" aria-label="Foot treatment">
+        <div class="stage-head">
+          <div class="stage-title-wrap">
+            <p class="eyebrow">Treatment room <span class="stage-dot">·</span> <span id="stage-client">Mira</span></p>
+            <h2 id="stage-title">Warm-up massage</h2>
+          </div>
+          <div class="meter" aria-label="Comfort level">
+            <div class="meter-top"><span>Comfort</span><strong id="comfort-value">70</strong></div>
+            <div class="meter-track"><i id="comfort-fill"></i></div>
+          </div>
+        </div>
+
+        <div class="pedestal">
+          <div class="pedestal-glow" aria-hidden="true"></div>
+          <div class="pedestal-rings" aria-hidden="true"><span></span><span></span></div>
+          <svg id="foot" viewBox="0 0 380 620" role="group" aria-label="Interactive foot. Massage the requested zone or polish the toenails.">
+            <defs>
+              <linearGradient id="skin" x1=".1" y1="0" x2=".9" y2="1">
+                <stop offset="0" stop-color="#f9d6ba"/>
+                <stop offset=".5" stop-color="#efb592"/>
+                <stop offset="1" stop-color="#d48b68"/>
+              </linearGradient>
+              <linearGradient id="skin-light" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#ffe4cf"/>
+                <stop offset="1" stop-color="#f0bd9b"/>
+              </linearGradient>
+              <radialGradient id="ball-blush" cx=".5" cy=".5" r=".5">
+                <stop offset="0" stop-color="#ffc0a1" stop-opacity=".65"/>
+                <stop offset="1" stop-color="#ffc0a1" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="nail-gloss" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#ffffff" stop-opacity=".75"/>
+                <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+              </linearGradient>
+              <filter id="foot-shadow" x="-30%" y="-30%" width="160%" height="160%">
+                <feDropShadow dx="0" dy="22" stdDeviation="24" flood-color="#08050d" flood-opacity=".55"/>
+              </filter>
+              <filter id="soft-glow" x="-80%" y="-80%" width="260%" height="260%">
+                <feGaussianBlur stdDeviation="14"/>
+              </filter>
+            </defs>
+
+            <ellipse cx="190" cy="572" rx="130" ry="26" fill="#08050d" opacity=".62" filter="url(#soft-glow)"/>
+
+            <g filter="url(#foot-shadow)">
+              <path class="sole" d="M134 146C104 152 92 177 95 206c4 34 14 57 9 91-5 36-22 64-17 104 6 50 39 83 84 88 48 5 86-26 98-71 10-38 1-73-4-109-5-36 11-65 9-96-2-32-18-55-46-64-30-10-65-9-94-3Z" fill="url(#skin)" stroke="#c17d5e" stroke-opacity=".28" stroke-width="1.5"/>
+              <ellipse cx="190" cy="208" rx="82" ry="58" fill="url(#ball-blush)"/>
+              <path d="M160 260c18-14 45-13 60 2 13 13 14 37 8 58-6 21-8 41-3 62" fill="none" stroke="#b66e52" stroke-opacity=".18" stroke-width="12" stroke-linecap="round"/>
+              <ellipse cx="187" cy="444" rx="47" ry="32" fill="url(#skin-light)" opacity=".3"/>
+            </g>
+
+            <g class="toes" data-zone="toes">
+              <ellipse cx="134" cy="150" rx="38" ry="50" transform="rotate(-8 134 150)" fill="url(#skin)" stroke="#c17d5e" stroke-opacity=".18"/>
+              <ellipse cx="184" cy="128" rx="27" ry="37" transform="rotate(-3 184 128)" fill="url(#skin)" stroke="#c17d5e" stroke-opacity=".18"/>
+              <ellipse cx="221" cy="122" rx="23" ry="32" transform="rotate(2 221 122)" fill="url(#skin)" stroke="#c17d5e" stroke-opacity=".18"/>
+              <ellipse cx="252" cy="128" rx="20" ry="27" transform="rotate(8 252 128)" fill="url(#skin)" stroke="#c17d5e" stroke-opacity=".18"/>
+              <ellipse cx="277" cy="140" rx="16" ry="22" transform="rotate(14 277 140)" fill="url(#skin)" stroke="#c17d5e" stroke-opacity=".18"/>
+            </g>
+
+            <g class="zones">
+              <ellipse class="zone" data-zone="ball" cx="190" cy="212" rx="86" ry="58"/>
+              <ellipse class="zone" data-zone="arch" cx="186" cy="324" rx="66" ry="90"/>
+              <ellipse class="zone" data-zone="heel" cx="184" cy="444" rx="56" ry="48"/>
+            </g>
+
+            <g class="nails">
+              <g class="nail-wrap" data-nail="big" data-zone="toes" transform="rotate(-8 132 136)">
+                <ellipse class="nail" cx="132" cy="136" rx="20" ry="26"/>
+                <ellipse class="nail-shine" cx="126" cy="126" rx="6.5" ry="10" transform="rotate(-18 126 126)"/>
+              </g>
+              <g class="nail-wrap" data-nail="two" data-zone="toes" transform="rotate(-3 184 115)">
+                <ellipse class="nail" cx="184" cy="115" rx="13.5" ry="18"/>
+                <ellipse class="nail-shine" cx="181" cy="109" rx="4.2" ry="6.8" transform="rotate(-18 181 109)"/>
+              </g>
+              <g class="nail-wrap" data-nail="three" data-zone="toes" transform="rotate(2 222 108)">
+                <ellipse class="nail" cx="222" cy="108" rx="12" ry="16"/>
+                <ellipse class="nail-shine" cx="219" cy="102.5" rx="3.8" ry="6" transform="rotate(-18 219 102.5)"/>
+              </g>
+              <g class="nail-wrap" data-nail="four" data-zone="toes" transform="rotate(8 253 118)">
+                <ellipse class="nail" cx="253" cy="118" rx="10" ry="13.5"/>
+                <ellipse class="nail-shine" cx="250.5" cy="113" rx="3.2" ry="5" transform="rotate(-18 250.5 113)"/>
+              </g>
+              <g class="nail-wrap" data-nail="five" data-zone="toes" transform="rotate(14 278 130)">
+                <ellipse class="nail" cx="278" cy="130" rx="8.5" ry="11"/>
+                <ellipse class="nail-shine" cx="276" cy="126" rx="2.7" ry="4.2" transform="rotate(-18 276 126)"/>
+              </g>
+            </g>
+
+            <g class="touch-hint" aria-hidden="true">
+              <circle class="hint-ring" cx="186" cy="324" r="20"/>
+            </g>
+          </svg>
+          <div id="toast" class="toast" role="status" aria-live="polite"></div>
+        </div>
+
+        <div class="stage-foot">
+          <span id="hint" class="hint-text">Oil is selected. Massage the glowing arch.</span>
+          <button id="collect" class="btn btn-primary btn-collect" type="button" hidden>Collect $24</button>
+        </div>
+      </section>
+
+      <aside class="panel tools-panel">
+        <div class="panel-label">Tools</div>
+        <div class="tool-grid" id="tools">
+          <button class="tool" type="button" data-tool="oil">
+            <span class="tool-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M9 3h6v3l2 3v10a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V9l2-3V3Z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 12h8" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="16" r="2.4" fill="currentColor" opacity=".7"/></svg>
+            </span>
+            <span>Oil</span>
+          </button>
+          <button class="tool" type="button" data-tool="scrub">
+            <span class="tool-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="12" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M7 8V5h10v3" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="9" cy="14" r="1" fill="currentColor"/><circle cx="12" cy="16" r="1" fill="currentColor"/><circle cx="15" cy="13" r="1" fill="currentColor"/></svg>
+            </span>
+            <span>Scrub</span>
+          </button>
+          <button class="tool" type="button" data-tool="lotion">
+            <span class="tool-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M10 3h4v3h-4zM8 6h8l1 4v9a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V10l1-4Z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 13c1-1 3-1 4 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </span>
+            <span>Lotion</span>
+          </button>
+        </div>
+
+        <div class="panel-label polish-label">Polish bar</div>
+        <div class="shades" id="shades" role="group" aria-label="Polish shades">
+          <button class="shade" type="button" data-shade="coral" style="--swatch:#ff6f61" aria-label="Coral"></button>
+          <button class="shade" type="button" data-shade="blush" style="--swatch:#ffb3c1" aria-label="Blush"></button>
+          <button class="shade" type="button" data-shade="plum" style="--swatch:#8e5a8f" aria-label="Plum"></button>
+          <button class="shade" type="button" data-shade="gold" style="--swatch:#e8b55b" aria-label="Gold"></button>
+          <button class="shade" type="button" data-shade="mint" style="--swatch:#7ec8b0" aria-label="Mint"></button>
+        </div>
+
+        <div class="holding">
+          <span class="holding-dot" aria-hidden="true"></span>
+          Holding <strong id="active-tool-name">Massage oil</strong>
+        </div>
+
+        <div class="note-card">
+          <div class="panel-label">House notes</div>
+          <p id="house-note">The arch holds the day. Work slowly, and let the oil warm between your palms.</p>
+        </div>
+      </aside>
+    </section>
+
+    <section id="summary" class="screen summary" aria-labelledby="summary-title" hidden>
+      <div class="summary-card">
+        <p class="eyebrow"><span class="dot"></span> Shift complete</p>
+        <h2 id="summary-title">The studio smells like <em>warm sugar.</em></h2>
+        <div class="summary-stats">
+          <div><span>Guests</span><strong id="summary-guests">3</strong></div>
+          <div><span>Tips earned</span><strong id="summary-money">$0</strong></div>
+          <div><span>Average comfort</span><strong id="summary-comfort">70</strong></div>
+        </div>
+        <p id="summary-note" class="summary-note">Every detail landed. The last client leaves with a softer step.</p>
+        <div class="summary-actions">
+          <button id="new-shift" class="btn btn-primary" type="button">New Shift</button>
+          <button id="back-menu" class="btn btn-ghost" type="button">Back to lobby</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="how-to-dialog" class="how-to">
+    <div class="how-to-inner">
+      <p class="eyebrow"><span class="dot"></span> The short version</p>
+      <h2>Read the card. Follow the ritual.</h2>
+      <ol>
+        <li><strong>Check the ritual list.</strong> Each guest asks for a sequence of treatments.</li>
+        <li><strong>Pick the right tool.</strong> Oil, scrub, lotion, or a polish shade.</li>
+        <li><strong>Touch the glowing zone.</strong> Massage the arch, seal the heel, or paint each toenail.</li>
+        <li><strong>Keep comfort high.</strong> Correct touches raise it. Wrong zones cost a little.</li>
+        <li><strong>Collect the tip.</strong> Finish all three steps, then serve the next guest.</li>
+      </ol>
+      <p class="how-to-note">Sole Mate is a cozy, non-explicit foot-care game. No account, no timers, no pressure.</p>
+      <button id="close-how-to" class="btn btn-primary" type="button">Got it</button>
+    </div>
+  </dialog>
+
+  <script src="./app.js"></script>
+</body>
+</html>

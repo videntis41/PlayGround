@@ -1,0 +1,11 @@
+{
+  "name": "sole-mate",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Sole Mate, a cozy non-explicit foot-care ritual sim",
+  "scripts": {
+    "build": "node build.mjs",
+    "start": "node serve.mjs"
+  }
+}
